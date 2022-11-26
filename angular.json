@@ -3,5 +3,38 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "angular14-jest": {
+      "projectType": "library",
+      "root": "projects/angular14-jest",
+      "sourceRoot": "projects/angular14-jest/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/angular14-jest/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/angular14-jest/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/angular14-jest/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/angular14-jest/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
   }
 }
